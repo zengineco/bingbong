@@ -1,26 +1,31 @@
-# Zeros App
+# Zeros App 2026
 
-A satirical payment simulation platform featuring the Zeros Bill.
+The official satirical payment interface for the Zengine Platform. Designed for PWA (Progressive Web App) deployment on iPhone and Android.
 
-## Features
-- Toggle between Apple and Android payment confirmation sounds.
-- Full-screen PWA support for iOS and Android.
-- High-fidelity Zeros Bill visual interface.
+## Setup Instructions
 
-## Installation
-1. Clone this repository to your GitHub account.
-2. Enable **GitHub Pages** under Settings > Pages.
-3. Open the generated URL on your iPhone using Safari.
-4. Tap the **Share** button and select **"Add to Home Screen"**.
+1. **Upload Assets:** Ensure the following files are in the root directory:
+   - `index.html`
+   - `manifest.json`
+   - `Zeros_Bill.jpg` (The image you provided)
+   - `apple.mp3` (The Apple Pay chime)
+   - `google.mp3` (The Google Pay chime)
+   - `icon.png` (512x512 logo)
 
-## Assets Required
-To ensure functionality, include the following in the root directory:
-- `Zeros_Bill.jpg`: The currency image.
-- `apple.mp3`: The Apple Pay confirmation chime.
-- `android.mp3`: The Android/Google Pay confirmation chime.
-- `icon.png`: A 512x512 app icon.
+2. **Deploy to GitHub Pages:**
+   - Go to Repo **Settings** > **Pages**.
+   - Set the source to the `main` branch and click **Save**.
 
----
-**Legal**
+3. **Install on iPhone:**
+   - Open the URL in **Safari**.
+   - Tap the **Share** icon (square with arrow).
+   - Select **"Add to Home Screen"**.
+
+## Ownership & Credits
 Zengine Platform, All Rights Reserved, 2026.
-No license, no copying, no distribution.
+**Strictly No license, no copying, no distribution.**
+
+## Connect
+- **Discord:** [Invite Link](https://discord.gg/Fde4nf2m)
+- **Socials:** @DooBedder (Instagram, X, Facebook, YouTube, TikTok)
+- **Twitch:** @DooBedder
