@@ -24,8 +24,3 @@ To ensure functionality, include the following in the root directory:
 **Legal**
 Zengine Platform, All Rights Reserved, 2026.
 No license, no copying, no distribution.
-
-**Connect**
-- Discord: https://discord.gg/Fde4nf2m
-- Socials: @DooBedder (IG, X, FB, YouTube, TikTok)
-- Twitch: @DooBedder
