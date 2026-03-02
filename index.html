@@ -4,118 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Zeros</title>
-    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Zeros">
-    <link rel="apple-touch-icon" href="icon.png">
     <link rel="manifest" href="manifest.json">
-
     <style>
-        :root {
-            --bg-color: #121212;
-            --card-bg: #1c1c1e;
-            --apple-green: #30d158;
-            --android-green: #3ddc84;
-        }
-
         body {
             margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #000;
+            color: white;
+            font-family: -apple-system, sans-serif;
             display: flex;
             flex-direction: column;
             height: 100vh;
-            overflow: hidden;
+            justify-content: space-between;
+            align-items: center;
         }
-
-        .main-content {
+        .app-container {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-        }
-
-        .bill-preview {
             width: 100%;
-            max-width: 450px;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            margin-bottom: 50px;
-            transition: transform 0.2s;
         }
-
-        .bill-preview:active {
-            transform: scale(0.98);
+        #bill {
+            width: 85%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.1);
+            transition: transform 0.1s, box-shadow 0.3s;
         }
-
-        .controls {
+        .success-glow {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px #30d158 !important;
+        }
+        .button-group {
+            margin-top: 40px;
             display: flex;
             gap: 15px;
-            width: 100%;
-            max-width: 350px;
+            width: 85%;
         }
-
-        .btn {
+        .pay-btn {
             flex: 1;
-            padding: 20px;
+            padding: 18px;
             border: none;
-            border-radius: 15px;
-            font-weight: 700;
+            border-radius: 12px;
             font-size: 14px;
+            font-weight: 700;
             text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            transition: opacity 0.1s;
+            letter-spacing: 1px;
         }
-
-        .btn:active { opacity: 0.7; }
-        .btn-apple { background: #ffffff; color: #000; }
-        .btn-android { background: var(--android-green); color: #000; }
-
+        /* Official Brand Colors */
+        .apple-pay { background: #ffffff; color: #000; }
+        .google-pay { background: #2DA94F; color: #ffffff; }
+        
         footer {
-            padding: 30px 15px;
+            padding: 20px;
             text-align: center;
-            font-size: 11px;
-            color: #888;
-            background: rgba(0,0,0,0.2);
+            font-size: 10px;
+            color: #555;
+            width: 100%;
         }
-
-        .credits { font-weight: bold; margin-bottom: 5px; }
-        .socials { opacity: 0.7; margin-top: 8px; font-size: 10px; }
+        .socials { margin-top: 5px; color: #888; }
     </style>
 </head>
 <body>
 
-    <div class="main-content">
-        <img src="Zeros_Bill.jpg" alt="Zeros Bill" class="bill-preview">
+    <div class="app-container">
+        <img src="Zeros_Bill.jpg" id="bill" alt="Zeros Bill">
         
-        <div class="controls">
-            <button class="btn btn-apple" onclick="play('apple')">Apple Pay</button>
-            <button class="btn btn-android" onclick="play('android')">Android Pay</button>
+        <div class="button-group">
+            <button class="pay-btn apple-pay" onclick="triggerPay('apple')">Apple Pay</button>
+            <button class="pay-btn google-pay" onclick="triggerPay('google')">Google Pay</button>
         </div>
     </div>
 
     <footer>
-        <div class="credits">Zengine Platform, All Rights Reserved, 2026.</div>
-        <div>No license, no copying, no distribution.</div>
+        <strong>Zengine Platform, All Rights Reserved, 2026.</strong><br>
+        No license, no copying, no distribution.<br>
         <div class="socials">
             Discord: https://discord.gg/Fde4nf2m | @DooBedder (IG/X/FB/YT/TikTok) | Twitch: @DooBedder
         </div>
     </footer>
 
     <script>
-        function play(vendor) {
-            const audio = new Audio(vendor + '.mp3');
-            audio.play().catch(err => {
-                console.log("Audio interaction blocked. Click a button first.");
-            });
+        function triggerPay(type) {
+            const audio = new Audio(type + '.mp3');
+            const bill = document.getElementById('bill');
+            
+            audio.play();
+            bill.classList.add('success-glow');
+            setTimeout(() => bill.classList.remove('success-glow'), 500);
+            
+            // Haptic Feedback for iPhone
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate([10, 30, 10]);
+            }
         }
     </script>
-
 </body>
 </html>
